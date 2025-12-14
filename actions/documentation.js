@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 export async function sendRepoUrl(prevState, formData) {
   const link = formData.get("link");
