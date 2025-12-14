@@ -17,21 +17,28 @@ export default function RepoLinkForm({ action }) {
     }
   }, [state.docs, setContent, router]);
   return (
-    <div className="flex flex-col gap-6">
+    <div className="w-full">
       <form
         action={formAction}
-        className="flex flex-col justify-center items-center gap-3 border w-125 py-7 px-5 rounded-md shadow-md"
+        className="glass-effect rounded-2xl p-8 space-y-6 w-full"
       >
-        <div className="flex flex-col gap-2">
-          <label htmlFor="repoUrl">GitHub Repository URL:</label>
+        <div className="space-y-3">
+          <label 
+            htmlFor="repoUrl" 
+            className="block text-sm font-semibold text-gray-700"
+          >
+            GitHub Repository URL
+          </label>
           <input
             type="text"
-            className="border rounded-sm p-1"
+            placeholder="https://github.com/username/repository"
+            className="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none bg-white/50 backdrop-blur-sm text-gray-900 placeholder:text-gray-400"
             name="link"
             id="repoUrl"
           />
         </div>
         <FormButton />
+        <p className="text-sm text-red-500">AI can be generate wrong or incomplete documentation. Please review carefully.</p>
       </form>
     </div>
   );
