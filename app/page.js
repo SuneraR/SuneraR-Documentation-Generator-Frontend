@@ -12,7 +12,7 @@ export default function Home() {
             Documentation Generator
           </h1>
           <p className="text-lg text-gray-600 max-w-xl mx-auto">
-            Transform your GitHub repository into comprehensive, beautiful documentation instantly.
+            Transform your GitHub repository or project ZIP file into comprehensive, beautiful documentation instantly.
           </p>
         </div>
         <RepoLinkForm action={sendRepoUrl} />
