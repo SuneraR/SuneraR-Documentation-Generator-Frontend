@@ -5,6 +5,7 @@ import FormButton from "./formButton";
 import { useRouter } from "next/navigation";
 import { usePreview } from "@/context/PreviewContext";
 import { useDropzone } from "react-dropzone";
+import { AlertCircle, UploadCloudIcon } from "lucide-react";
 
 export default function ZipFileForm({ action }) {
   const [state, formAction] = useActionState(action, {});
@@ -54,23 +55,11 @@ export default function ZipFileForm({ action }) {
             }`}
           >
             <input {...getInputProps({ name: "zipFile" })} />
-            <svg
-              className={`w-12 h-12 transition-colors ${
+            <UploadCloudIcon  className={`w-12 h-12 transition-colors ${
                 isDragActive
                   ? "text-indigo-500"
                   : "text-gray-400 group-hover:text-indigo-500"
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              />
-            </svg>
+              }`}/>
             {isDragActive ? (
               <div className="text-center">
                 <p className="text-sm font-semibold text-indigo-600">
@@ -103,24 +92,10 @@ export default function ZipFileForm({ action }) {
           {state.error && <p className="text-sm text-red-500">{state.error}</p>}
         </div>
         <FormButton hasFile={!!selectedFile} />
-        <p className="text-sm text-amber-600 flex items-start gap-2">
-          <svg
-            className="w-5 h-5 flex-shrink-0 mt-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            />
-          </svg>
-          <span>
-            AI can generate wrong or incomplete documentation. Please review
-            carefully.
-          </span>
+        <p className="text-sm text-red-500 flex items-center justify-center gap-2">
+          <AlertCircle />
+          AI can generate wrong or incomplete documentation. Please review
+          carefully.
         </p>
       </form>
     </div>

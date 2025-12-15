@@ -4,6 +4,7 @@ import { useActionState, useEffect } from "react";
 import FormButton from "./formButton";
 import { useRouter } from "next/navigation";
 import { usePreview } from "@/context/PreviewContext";
+import { AlertCircle } from "lucide-react";
 
 export default function RepoLinkForm({ action }) {
   const [state, formAction] = useActionState(action, {});
@@ -38,7 +39,7 @@ export default function RepoLinkForm({ action }) {
           />
         </div>
         <FormButton />
-        <p className="text-sm text-red-500">AI can be generate wrong or incomplete documentation. Please review carefully.</p>
+        <p className="flex items-center gap-2 justify-center text-sm text-red-500"><AlertCircle />AI can be generate wrong or incomplete documentation. Please review carefully.</p>
       </form>
     </div>
   );
