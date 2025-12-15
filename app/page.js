@@ -1,5 +1,6 @@
-import { sendRepoUrl } from "@/actions/documentation";
+import { sendProjectZip, sendRepoUrl } from "@/actions/documentation";
 import RepoLinkForm from "@/components/RepoForm/repoLinkForm";
+import ZipFileForm from "@/components/ZipFileForm/zipfileForm";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
           </p>
         </div>
         <RepoLinkForm action={sendRepoUrl} />
+        <ZipFileForm action={sendProjectZip} />
       </div>
     </div>
   );
