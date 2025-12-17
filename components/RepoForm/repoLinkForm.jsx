@@ -8,13 +8,13 @@ import { AlertCircle } from "lucide-react";
 
 export default function RepoLinkForm({ action }) {
   const [state, formAction] = useActionState(action, {});
-  const router=useRouter();
-  const {setContent}=usePreview();
+  const router = useRouter();
+  const { setContent } = usePreview();
 
   useEffect(() => {
     if (state.docs) {
       setContent(state.docs);
-      router.push('/preview');
+      router.push("/preview");
     }
   }, [state.docs, setContent, router]);
   return (
@@ -24,8 +24,8 @@ export default function RepoLinkForm({ action }) {
         className="glass-effect rounded-2xl p-8 space-y-6 w-full"
       >
         <div className="space-y-3">
-          <label 
-            htmlFor="repoUrl" 
+          <label
+            htmlFor="repoUrl"
             className="block text-sm font-semibold text-gray-700"
           >
             GitHub Repository URL
@@ -39,7 +39,11 @@ export default function RepoLinkForm({ action }) {
           />
         </div>
         <FormButton />
-        <p className="flex items-center gap-2 justify-center text-sm text-red-500"><AlertCircle />AI can be generate wrong or incomplete documentation. Please review carefully.</p>
+        <p className="flex items-center gap-2 justify-center text-sm text-red-500">
+          <AlertCircle />
+          AI can be generate wrong or incomplete documentation. Please review
+          carefully.
+        </p>
       </form>
     </div>
   );
