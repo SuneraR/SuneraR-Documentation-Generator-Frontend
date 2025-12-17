@@ -6,8 +6,19 @@ import { useRouter } from "next/navigation";
 import { usePreview } from "@/context/PreviewContext";
 import { useDropzone } from "react-dropzone";
 import { AlertCircle, UploadCloudIcon } from "lucide-react";
+import { useFormStatus } from "react-dom";
 
-export default function ZipFileForm({ action }) {
+function FormStatusTracker({ setIsProcessing }) {
+  const { pending } = useFormStatus();
+  
+  useEffect(() => {
+    setIsProcessing(pending);
+  }, [pending, setIsProcessing]);
+  
+  return null;
+}
+
+export default function ZipFileForm({ action, setIsProcessing }) {
   const [state, formAction] = useActionState(action, {});
   const [selectedFile, setSelectedFile] = useState(null);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -42,6 +53,7 @@ export default function ZipFileForm({ action }) {
         action={handleSubmit}
         className="glass-effect rounded-2xl p-8 space-y-6 w-full"
       >
+        <FormStatusTracker setIsProcessing={setIsProcessing} />
         <div className="space-y-3">
           <label className="block text-sm font-semibold text-gray-700">
             Upload Project Zip File

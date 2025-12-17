@@ -5,8 +5,19 @@ import FormButton from "./formButton";
 import { useRouter } from "next/navigation";
 import { usePreview } from "@/context/PreviewContext";
 import { AlertCircle } from "lucide-react";
+import { useFormStatus } from "react-dom";
 
-export default function RepoLinkForm({ action }) {
+function FormStatusTracker({ setIsProcessing }) {
+  const { pending } = useFormStatus();
+  
+  useEffect(() => {
+    setIsProcessing(pending);
+  }, [pending, setIsProcessing]);
+  
+  return null;
+}
+
+export default function RepoLinkForm({ action, setIsProcessing }) {
   const [state, formAction] = useActionState(action, {});
   const router = useRouter();
   const { setContent } = usePreview();
@@ -23,6 +34,7 @@ export default function RepoLinkForm({ action }) {
         action={formAction}
         className="glass-effect rounded-2xl p-8 space-y-6 w-full"
       >
+        <FormStatusTracker setIsProcessing={setIsProcessing} />
         <div className="space-y-3">
           <label
             htmlFor="repoUrl"
